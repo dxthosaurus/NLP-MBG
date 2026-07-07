@@ -46,9 +46,9 @@ nlp-mbg-project/
 │   └── logistic_regression_model.joblib # Model Logistic Regression
 │
 ├── notebooks/
-│   ├── preprocessing.py                 # Script pembersihan data & similarity
-│   ├── train_model.py                   # Script pelatihan 4 model klasifikasi (ABSA)
-│   └── train_ner.py                     # Script ekstraksi dan evaluasi NER
+│   ├── preprocessing.ipynb              # Script pembersihan data & similarity
+│   ├── train_model.ipynb                # Script pelatihan 4 model klasifikasi (ABSA)
+│   └── train_ner.ipynb                  # Script ekstraksi dan evaluasi NER
 │
 ├── requirements.txt                     # Daftar library dependensi
 └── README.md                            # Dokumentasi repositori
@@ -62,17 +62,56 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal A
 * git clone [https://github.com/username-github-anda/nlp-mbg-project.git](https://github.com/username-github-anda/nlp-mbg-project.git)
 cd nlp-mbg-project
 
-2. Buat Virtual Environment
+**2. Buat Virtual Environment**
 * Sangat disarankan menggunakan virtual environment agar versi library tidak bentrok dengan proyek Python lainnya.
 
 **3. Aktifkan Virtual Environment**
 * .\venv\Scripts\Activate.ps1
 (Catatan: Jika terjadi error Execution_Policies, jalankan perintah Set-ExecutionPolicy Unrestricted -Scope CurrentUser terlebih dahulu sebagai Administrator).
 
-**4. Instal Dependensi
+**4. Instal Dependensi**
 * pip install -r requirements.txt
+
+---
 
 ## 🚀 Cara Pelatihan Ulang Model (Training)
 Jika Anda ingin melatih ulang model dengan dataset yang baru, jalankan script yang tersedia di dalam folder notebooks/. Eksekusi dilakukan dari direktori utama (root).
-**1. Melatih Model Klasifikasi ABSA
-* python notebooks/train_model.py
+
+**1. Melakukan preprocessing data**
+* python notebooks/preprocessing.ipynb
+Script ini akan memuat dataset dan melakukan preprocessing pada data. Notebook ini akan memanggil dataset **comment_data.csv** dan dataset **comment_sentiment.csv**, pastikan jalur direktorinya sudah benar. Kemudian notebook ini akan menghasilkan **absa_dataset_sampled.csv** yang nanti digunakan pada step 2 dan 3.
+
+**2. Melatih Model Klasifikasi ABSA**
+* python notebooks/train_model.ipynb
+Script ini akan memuat dataset, mengekstraksi TF-IDF, melatih 4 algoritma, menampilkan Confusion Matrix, dan menyimpan model .joblib ke folder models/.
+
+**3. Melatih dan Mengevaluasi NER
+* python notebooks/train_ner.py
+Script ini akan menjalankan Rule-Based NER dan melakukan simulasi evaluasi pencetakan matriks presisi level-token.
+
+---
+
+## 🌐 Cara Menjalankan Aplikasi Web (Deployment Lokal)
+Aplikasi web interaktif digunakan untuk melakukan inferensi (testing) kalimat baru secara langsung tanpa perlu proses training ulang, menggunakan arsitektur caching memori.
+
+Jalankan perintah berikut di terminal:
+* streamlit run app.py
+
+Aplikasi akan otomatis terbuka di browser bawaan pada alamat lokal http://localhost:8501.
+
+💡 Contoh Penggunaan Aplikasi
+1. Buka aplikasi web yang telah berjalan di browser Anda.
+
+2. Pada area input teks, masukkan contoh opini masyarakat:
+
+"Menu nya sedikit banget, terus ini anggarannya nyampe ga... atau disunat? gila emang"
+
+3. Klik tombol Analisis dengan 4 Model.
+
+4. Hasil Output:
+
+NER Ekstraksi: Kata Menu dan anggarannya akan disorot dengan warna kuning (menandakan deteksi entitas ASPECT).
+
+Dashboard Probabilitas: Keempat model (SVM, Random Forest, Naive Bayes, Logistic Regression) akan menampilkan progress bar, di mana secara mayoritas akan menunjuk probabilitas tertinggi pada kelas NEGATIF.
+
+Proyek Akademik Ujian Akhir Semester (UAS) - Pemrosesan Bahasa Alami | Universitas Dian Nuswantoro (2026)
