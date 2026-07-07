@@ -59,8 +59,8 @@ nlp-mbg-project/
 Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal Anda menggunakan terminal PowerShell/CMD di Visual Studio Code.
 
 **1. Clone repositori ini**
-* git clone [https://github.com/username-github-anda/nlp-mbg-project.git](https://github.com/username-github-anda/nlp-mbg-project.git)
-cd nlp-mbg-project
+`git clone [https://github.com/username-github-anda/nlp-mbg-project.git](https://github.com/username-github-anda/nlp-mbg-project.git)
+cd nlp-mbg-project`
 
 **2. Buat Virtual Environment**
 * Sangat disarankan menggunakan virtual environment agar versi library tidak bentrok dengan proyek Python lainnya.
