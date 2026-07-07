@@ -52,7 +52,7 @@ nlp-mbg-project/
 
 ```
 ---
-⚙️ Panduan Instalasi (Windows / VS Code)
+## ⚙️ Panduan Instalasi (Windows / VS Code)
 Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal Anda menggunakan terminal PowerShell/CMD di Visual Studio Code.
 
 1. Clone repositori ini
