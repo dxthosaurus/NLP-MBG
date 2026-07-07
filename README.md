@@ -59,6 +59,7 @@ nlp-mbg-project/
 Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal Anda menggunakan terminal PowerShell/CMD di Visual Studio Code.
 
 **1. Clone repositori ini**
+
 `git clone [https://github.com/username-github-anda/nlp-mbg-project.git](https://github.com/username-github-anda/nlp-mbg-project.git)
 cd nlp-mbg-project`
 
@@ -66,11 +67,14 @@ cd nlp-mbg-project`
 * Sangat disarankan menggunakan virtual environment agar versi library tidak bentrok dengan proyek Python lainnya.
 
 **3. Aktifkan Virtual Environment**
-* .\venv\Scripts\Activate.ps1
+
+`.\venv\Scripts\Activate.ps1`
+
 (Catatan: Jika terjadi error Execution_Policies, jalankan perintah Set-ExecutionPolicy Unrestricted -Scope CurrentUser terlebih dahulu sebagai Administrator).
 
 **4. Instal Dependensi**
-* pip install -r requirements.txt
+
+`pip install -r requirements.txt`
 
 ---
 
@@ -78,15 +82,21 @@ cd nlp-mbg-project`
 Jika Anda ingin melatih ulang model dengan dataset yang baru, jalankan script yang tersedia di dalam folder notebooks/. Eksekusi dilakukan dari direktori utama (root).
 
 **1. Melakukan preprocessing data**
-* python notebooks/preprocessing.ipynb
+
+`python notebooks/preprocessing.ipynb`
+
 Script ini akan memuat dataset dan melakukan preprocessing pada data. Notebook ini akan memanggil dataset **comment_data.csv** dan dataset **comment_sentiment.csv**, pastikan jalur direktorinya sudah benar. Kemudian notebook ini akan menghasilkan **absa_dataset_sampled.csv** yang nanti digunakan pada step 2 dan 3.
 
 **2. Melatih Model Klasifikasi ABSA**
-* python notebooks/train_model.ipynb
+
+`python notebooks/train_model.ipynb`
+
 Script ini akan memuat dataset, mengekstraksi TF-IDF, melatih 4 algoritma, menampilkan Confusion Matrix, dan menyimpan model .joblib ke folder models/.
 
 **3. Melatih dan Mengevaluasi NER**
-* python notebooks/train_ner.py
+
+`python notebooks/train_ner.py`
+
 Script ini akan menjalankan Rule-Based NER dan melakukan simulasi evaluasi pencetakan matriks presisi level-token.
 
 ---
@@ -95,7 +105,8 @@ Script ini akan menjalankan Rule-Based NER dan melakukan simulasi evaluasi pence
 Aplikasi web interaktif digunakan untuk melakukan inferensi (testing) kalimat baru secara langsung tanpa perlu proses training ulang, menggunakan arsitektur caching memori.
 
 Jalankan perintah berikut di terminal:
-* streamlit run app.py
+
+`streamlit run app.py`
 
 Aplikasi akan otomatis terbuka di browser bawaan pada alamat lokal http://localhost:8501.
 
