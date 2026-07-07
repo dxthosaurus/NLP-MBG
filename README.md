@@ -85,7 +85,7 @@ Script ini akan memuat dataset dan melakukan preprocessing pada data. Notebook i
 * python notebooks/train_model.ipynb
 Script ini akan memuat dataset, mengekstraksi TF-IDF, melatih 4 algoritma, menampilkan Confusion Matrix, dan menyimpan model .joblib ke folder models/.
 
-**3. Melatih dan Mengevaluasi NER
+**3. Melatih dan Mengevaluasi NER**
 * python notebooks/train_ner.py
 Script ini akan menjalankan Rule-Based NER dan melakukan simulasi evaluasi pencetakan matriks presisi level-token.
 
