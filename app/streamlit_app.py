@@ -15,7 +15,7 @@ st.markdown("Aplikasi NLP membandingkan prediksi 4 algoritma berbeda terkait Pro
 def load_all_models():
     vec = joblib.load('models/tfidf_vectorizer.joblib')
     models_dict = {
-        "SVM (Linear)": joblib.load('modelssvm_model.joblib'),
+        "SVM (Linear)": joblib.load('models/svm_model.joblib'),
         "Random Forest": joblib.load('models/random_forest_model.joblib'),
         "Naive Bayes": joblib.load('models/naive_bayes_model.joblib'),
         "Logistic Reg": joblib.load('moddels/logistic_regression_model.joblib')
