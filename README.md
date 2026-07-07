@@ -30,6 +30,10 @@ Dataset yang digunakan merupakan data dunia nyata (*in-the-wild*) tanpa kurasi l
 ```text
 nlp-mbg-project/
 │
+├── app/
+|   ├── streamlit_app.py                 # File utama aplikasi Streamlit
+|   ├── requirements.txt                 # Dependensi yang dibutuhkan aplikasi
+|
 ├── data/
 │   ├── absa_dataset_sampled.csv         # Dataset label sentimen & aspek (450 baris)
 │   └── ner_bio_dataset.tsv              # Dataset token-level format BIO Tagging
@@ -41,12 +45,11 @@ nlp-mbg-project/
 │   ├── naive_bayes_model.joblib         # Model Multinomial Naive Bayes
 │   └── logistic_regression_model.joblib # Model Logistic Regression
 │
-├── scripts/
+├── notebooks/
 │   ├── preprocessing.py                 # Script pembersihan data & similarity
 │   ├── train_model.py                   # Script pelatihan 4 model klasifikasi (ABSA)
 │   └── train_ner.py                     # Script ekstraksi dan evaluasi NER
 │
-├── app.py                               # File utama aplikasi Streamlit
 ├── requirements.txt                     # Daftar library dependensi
 └── README.md                            # Dokumentasi repositori
 
@@ -55,4 +58,21 @@ nlp-mbg-project/
 ## ⚙️ Panduan Instalasi (Windows / VS Code)
 Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal Anda menggunakan terminal PowerShell/CMD di Visual Studio Code.
 
-1. Clone repositori ini
+**1. Clone repositori ini**
+* git clone [https://github.com/username-github-anda/nlp-mbg-project.git](https://github.com/username-github-anda/nlp-mbg-project.git)
+cd nlp-mbg-project
+
+2. Buat Virtual Environment
+* Sangat disarankan menggunakan virtual environment agar versi library tidak bentrok dengan proyek Python lainnya.
+
+**3. Aktifkan Virtual Environment**
+* .\venv\Scripts\Activate.ps1
+(Catatan: Jika terjadi error Execution_Policies, jalankan perintah Set-ExecutionPolicy Unrestricted -Scope CurrentUser terlebih dahulu sebagai Administrator).
+
+**4. Instal Dependensi
+* pip install -r requirements.txt
+
+## 🚀 Cara Pelatihan Ulang Model (Training)
+Jika Anda ingin melatih ulang model dengan dataset yang baru, jalankan script yang tersedia di dalam folder notebooks/. Eksekusi dilakukan dari direktori utama (root).
+**1. Melatih Model Klasifikasi ABSA
+* python notebooks/train_model.py
