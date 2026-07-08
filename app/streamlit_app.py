@@ -8,9 +8,8 @@ st.set_page_config(page_title="ABSA & NER Makan Bergizi Gratis", layout="wide")
 st.title("🍽️ Analisis Sentimen Multi-Model & Ekstraksi Entitas")
 st.markdown("Aplikasi NLP membandingkan prediksi 4 algoritma berbeda terkait Program Makan Bergizi Gratis.")
 
-# ==========================================
-# 1. LOAD 4 MODEL TERLATIH
-# ==========================================
+# 1. LOAD 4 MODEL YANG SUDAH DILATIH
+
 @st.cache_resource
 def load_all_models():
     vec = joblib.load('models/tfidf_vectorizer.joblib')
@@ -18,19 +17,18 @@ def load_all_models():
         "SVM (Linear)": joblib.load('models/svm_model.joblib'),
         "Random Forest": joblib.load('models/random_forest_model.joblib'),
         "Naive Bayes": joblib.load('models/naive_bayes_model.joblib'),
-        "Logistic Reg": joblib.load('moddels/logistic_regression_model.joblib')
+        "Logistic Reg": joblib.load('models/logistic_regression_model.joblib')
     }
     return vec, models_dict
 
 try:
     vectorizer, loaded_models = load_all_models()
 except Exception as e:
-    st.error("⚠️ Gagal memuat model. Pastikan kamu sudah menjalankan script export_models.py")
+    st.error("⚠️ Gagal memuat model.")
     st.stop()
 
-# ==========================================
 # 2. KAMUS NER & FUNGSI BIO TAGGING
-# ==========================================
+
 entities_dict = {
     'ASPECT': ['anggaran', 'dana', 'uang', 'pajak', 'korupsi', 'triliun', 'biaya',
                'menu', 'susu', 'makan', 'gizi', 'nasi', 'lauk', 'sayur', 'telur',
@@ -70,9 +68,9 @@ def detect_aspect_and_ner(text):
         
     return detected_aspect, bio_tags
 
-# ==========================================
+
 # 3. ANTARMUKA PENGGUNA (UI)
-# ==========================================
+
 user_input = st.text_area("✍️ Masukkan ulasan atau opini masyarakat:", height=120)
 
 if st.button("🔍 Analisis dengan 4 Model", type="primary"):
